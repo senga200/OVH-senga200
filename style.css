@@ -1,0 +1,672 @@
+:root {
+    --card-height: 40vh;
+    --card-width: calc(var(--card-height) / 1.5);
+    --bigCard-height: 60vh;
+    --bigCard-width: calc(var(--bigCard-height) / 1.5);
+}
+
+@property --rotate {
+    syntax: "<angle>";
+    initial-value: 380deg;
+    inherits: false;
+}
+
+@keyframes rotate3D {
+    0% {
+        transform: rotateY(0deg) rotateX(0deg);
+    }
+
+    50% {
+        transform: rotateY(180deg) rotateX(180deg);
+    }
+
+    100% {
+        transform: rotateY(360deg) rotateX(360deg);
+    }
+}
+
+@keyframes shrinkAndDisappear {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+@keyframes spin {
+    0% {
+        --rotate: 0deg;
+    }
+
+    100% {
+        --rotate: 360deg;
+    }
+}
+
+@keyframes glitch {
+    0% {
+        clip: rect(20px, 10000px, 5px, 0);
+        /* transform: skew(0.35deg); */
+    }
+
+    5% {
+        clip: rect(12px, 10000px, 15px, 0);
+        /* transform: skew(0.85deg); */
+    }
+
+    10% {
+        clip: rect(72px, 10000px, 45px, 0);
+        /*transform: skew(0.25deg);*/
+    }
+
+    15% {
+        clip: rect(40px, 10000px, 35px, 0);
+        /*transform: skew(0.75deg);*/
+    }
+
+    20% {
+        clip: rect(86px, 10000px, 93px, 0);
+        /*transform: skew(0.45deg);*/
+    }
+
+    25% {
+        clip: rect(10px, 10000px, 17px, 0);
+        /*transform: skew(0.55deg);*/
+    }
+
+    30% {
+        clip: rect(24px, 10000px, 31px, 0);
+        /*transform: skew(0.15deg);*/
+    }
+
+    35% {
+        clip: rect(64px, 10000px, 71px, 0);
+        /*transform: skew(0.65deg);*/
+    }
+
+    40% {
+        clip: rect(30px, 10000px, 36px, 0);
+        /*transform: skew(0.95deg);*/
+    }
+
+    45% {
+        clip: rect(54px, 10000px, 41px, 0);
+        /*transform: skew(0.05deg);*/
+    }
+
+    50% {
+        clip: rect(38px, 10000px, 45px, 0);
+        /*transform: skew(0.35deg);*/
+    }
+
+    55% {
+        clip: rect(80px, 10000px, 87px, 0);
+        /*transform: skew(0.85deg);*/
+    }
+
+    60% {
+        clip: rect(26px, 10000px, 33px, 0);
+        /* transform: skew(0.25deg);*/
+    }
+
+    65% {
+        clip: rect(70px, 10000px, 77px, 0);
+        /*transform: skew(0.75deg);*/
+    }
+
+    70% {
+        clip: rect(22px, 10000px, 29px, 0);
+        /*transform: skew(0.45deg);*/
+    }
+
+    75% {
+        clip: rect(48px, 10000px, 55px, 0);
+        /*transform: skew(0.55deg);*/
+    }
+
+    80% {
+        clip: rect(66px, 10000px, 73px, 0);
+        /*transform: skew(0.15deg);*/
+    }
+
+    85% {
+        clip: rect(28px, 10000px, 35px, 0);
+        /*transform: skew(0.65deg);*/
+    }
+
+    90% {
+        clip: rect(36px, 10000px, 43px, 0);
+        /*transform: skew(0.95deg);*/
+    }
+
+    95% {
+        clip: rect(58px, 10000px, 65px, 0);
+        /* transform: skew(0.05deg);*/
+    }
+
+    100% {
+        clip: rect(74px, 10000px, 81px, 0);
+        /*transform: skew(0.35deg);*/
+    }
+}
+
+@keyframes anaglyphe {
+    to {
+        filter: drop-shadow(-2px 0 0.5px red) drop-shadow(2px 0 0.5px cyan);
+    }
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+    min-width: 100vh;
+    margin: 0;
+    padding: 0;
+    background: #212534;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    box-sizing: border-box;
+}
+
+header {
+    justify-content: center;
+    align-items: center;
+    color: whitesmoke;
+    width: 100%;
+}
+
+.nav {
+    display: flex;
+    top: 0;
+    margin: 0 auto;
+    padding: 1rem 3rem 1rem 3rem;
+    justify-content: space-between;
+    text-align: center;
+
+    background-color: whitesmoke;
+    box-shadow: 5px 3px 8px red, -3px -3px 5px blue;
+}
+
+.lien {
+    text-align: center;
+    transition: all .4s ease-in-out;
+}
+
+.lien:hover {
+    cursor: pointer;
+    text-shadow: -0.15em 0 red, 0.15em 0 cyan;
+}
+
+.playingArea {
+    position: relative;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.playingArea img {
+    border-radius: 50%;
+    width: 150px;
+
+}
+
+.score {
+    padding: 2rem;
+}
+
+.square {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    opacity: 80%;
+    cursor: pointer;
+    transition: top 0.5s ease-out, opacity 0.5s ease-out, transform 0.5s ease-out;
+    background-color: cyan;
+    box-shadow: 3px 3px 5px red, -3px -3px 5px blue;
+}
+
+.square.clicked {
+    animation: shrinkAndDisappear 0.5s forwards, rotate3D 0.5s forwards;
+    opacity: 0;
+}
+
+h1 {
+    font-size: 4rem;
+    text-align: center;
+}
+
+.glitch {
+    font-family: 'Courier New', Courier, monospace;
+    position: relative;
+    font-size: 4rem;
+    background-color: whitesmoke;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: glitch 2.5s linear infinite;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 red;
+    animation: glitch 2s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: -2px 0 cyan;
+    animation: glitch 2s infinite linear alternate-reverse;
+}
+
+
+
+.presentation2 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 50vh;
+    width: 75%;
+    color: black;
+}
+
+
+.presentation-title {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: all .4s ease-in-out;
+}
+
+.presentation-title:hover {
+    text-shadow: -0.15em 0 red, 0.15em 0 cyan;
+}
+
+.presentation-title i {
+    font-size: 1.5rem;
+    padding-right: 1rem;
+}
+
+.competences, .apprentissage, .softSkills {
+    position: relative;
+    background-color: whitesmoke;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 8px;
+    color: black;
+    width: 30vh;
+    height: 30vh;
+    overflow: hidden;
+    transition: all .4s ease-in-out;
+}
+
+.competences:hover, .apprentissage:hover, .softSkills:hover {
+    box-shadow: -0.25em 0 red, 0.25em 0 cyan;
+}
+
+.mesProjets {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+    width: 90%;
+    font-size: 14px;
+
+}
+
+.mesProjets a {
+    color: cyan;
+}
+
+.card {
+    background: #191c29;
+    width: var(--card-width);
+    height: var(--card-height);
+    padding: 3px;
+    position: relative;
+    border-radius: 6px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    font-size: 1em;
+    color: rgb(88 199 250 / 0%);
+    cursor: pointer;
+}
+
+.bigCard {
+    background: #191c29;
+    width: var(--bigCard-width);
+    height: var(--bigCard-height);
+    margin: 2rem;
+    padding: 1rem;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    font-size: 1em;
+    cursor: pointer;
+    color: cyan;
+
+}
+
+.bigCard img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+li {
+    list-style-type: none;
+}
+
+h3 {
+    font-size: 1rem;
+    position: absolute;
+    bottom: 0;
+    width: 87%;
+}
+
+
+.default-text {
+    color: cyan;
+    height: 100%;
+}
+
+.hover-text {
+    display: none;
+}
+
+.card:hover .default-text {
+    display: none;
+}
+
+.bigCard:hover .default-text {
+    display: none;
+}
+
+.card:hover .hover-text {
+    display: block;
+    color: cyan;
+    transition: color 1s;
+}
+
+.bigCard:hover .hover-text {
+    display: block;
+    color: cyan;
+    transition: color 1s;
+
+}
+
+.card:hover:before, .card:hover:after {
+    animation: none;
+    opacity: 0;
+}
+
+
+.bigCard:hover:before, .bigCard:hover:after {
+    animation: none;
+    opacity: 0;
+}
+
+.card::before, .bigCard::before {
+    content: "";
+    width: 102%;
+    height: 101%;
+    background-image: linear-gradient(var(--rotate),
+            white 50%, cyan 70%, red);
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: -1%;
+    animation: 0.1s anaglyphe infinite;
+    filter: drop-shadow(3px 0 1px red) drop-shadow(-3px 0 1px cyan);
+
+}
+
+
+a {
+    color: #212534;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-weight: bold;
+    margin-top: 2rem;
+}
+
+
+
+.footer {
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
+
+
+.footer-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    color: black;
+
+}
+
+.footer-text p {
+    margin: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*PROTECTED PAGE*/
+.bg-left {
+    background-image: url('media/super8video.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 50%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+}
+
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 600px;
+    background-color: white;
+    padding: 45px;
+    border-radius: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    z-index: 1;
+    display: none;
+}
+
+.close-button {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    cursor: pointer;
+    transition: 0.3s all ease-in-out;
+    padding: 1rem;
+}
+
+i {
+    font-size: 2rem;
+
+}
+
+.close-button:hover {
+    transform: rotate(90deg);
+}
+
+.troisFilles, .laetitiaVirginie, .laetitia, .beaulard {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+video {
+    width: 80%;
+    height: auto;
+}
+
+.videos img {
+    margin: 3rem;
+    width: 30%;
+    height: auto;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background-color 1s ease-in-out, transform 1s ease-in-out, border-radius 1s ease-in-out;
+
+}
+
+.videos img:hover {
+    transform: scale(1.1);
+
+}
+
+.video-container video {
+    width: 100%;
+    height: auto;
+}
+
+/*media queries*/
+
+@media screen and (max-width: 768px) {
+
+    body {
+        min-width: 100%;
+        min-height: 100%;
+
+    }
+
+
+
+    /*HOME PAGE*/
+    .nav {
+        padding: 1rem 1rem 1rem 1rem;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .nav li {
+        display: none;
+    }
+
+    .presentation2, .mesProjets {
+        display: grid;
+        height: auto;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+
+    .footer {
+        display: none;
+    }
+
+
+
+
+    /*PROTECTED PAGE*/
+    .bg-left {
+        width: 100%;
+        height: 50vh;
+    }
+
+    .overlay {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .bg-left {
+        background-size: cover;
+        background-repeat: repeat;
+        width: 50%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+
+    .modal {
+        padding: 25px;
+    }
+
+    .troisFilles, .laetitiaVirginie, .laetitia, .beaulard {
+        flex-direction: column;
+    }
+
+    .close-button {
+        top: -0.8rem;
+        right: -0.8rem;
+
+    }
+
+    i {
+        font-size: 1.5rem;
+    }
+
+    .videos img {
+        width: 50%;
+    }
+}
