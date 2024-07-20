@@ -162,14 +162,14 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    height: 100vh;
     width: 100%;
+    height: auto;
     margin: 0;
     padding: 0;
     background: #212534;
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
     box-sizing: border-box;
 }
 
@@ -200,6 +200,7 @@ header {
     cursor: pointer;
     text-shadow: -0.15em 0 red, 0.15em 0 cyan;
 }
+
 
 .playingArea {
     position: relative;
@@ -258,15 +259,16 @@ header {
     }
 }
 
+/* 
+main {
+    width: 100%;
+    border: solid red;
 
+} */
 
 h1 {
     font-size: 4rem;
     text-align: center;
-    border: solid red;
-
-
-
 }
 
 .glitch {
@@ -355,11 +357,10 @@ h1 {
 
 .mesProjets {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-
+    grid-template-columns: repeat(3, 1fr);
     justify-content: space-around;
     align-items: center;
-    height: 100vh;
+    height: 100%;
     width: 90%;
     font-size: 14px;
 }
@@ -475,6 +476,11 @@ h3 {
 
 }
 
+.bigCard li {
+    text-align: left;
+    list-style: square;
+}
+
 
 a {
     color: #212534;
@@ -485,7 +491,8 @@ a {
 }
 
 footer {
-    display: flex;
+    margin-top: auto;
+
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -494,6 +501,7 @@ footer {
 }
 
 .footer {
+    margin-top: auto;
     text-align: center;
     padding-bottom: 0.5rem;
     background-size: cover;
@@ -507,6 +515,7 @@ footer {
 
 
 .footer-text {
+    margin-top: auto;
     display: flex;
     justify-content: center;
     align-items: center;

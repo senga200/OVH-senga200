@@ -2,13 +2,26 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/21df0f8715.js"
+      crossorigin="anonymous"
+    ></script>
+    <link href="formStyle.css" rel="stylesheet" />
     <title>Page d'accueil</title>
   </head>
   <body>
-    <form action="private.php" method="post">
-      <label for="password">Mot de passe:</label>
-      <input type="password" id="password" name="password" required />
-      <input type="submit" value="Entrer" />
-    </form>
+    <main>
+      <div class="motDePasse">
+        <form action="private.php" method="post">
+          <label for="password">Mot de passe:</label>
+          <input type="password" id="password" name="password" required />
+          <input type="submit" value="Entrer" />
+          <a href="index.html">
+            <li>Retour à l'accueil</li>
+          </a>
+        </form>
+      </div>
+    </main>
   </body>
 </html>

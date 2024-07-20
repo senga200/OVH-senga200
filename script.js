@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function createSquare() {
     if (currentSquares < maxSquares) {
       const square = document.createElement("div");
-      square.classList.add("square");
+      square.classList.add("square", "anaglyph");
       square.style.left = `${Math.random() * (playingArea.clientWidth - 40)}px`;
       square.style.top = "-100px";
 
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
       currentSquares++;
 
       let squareInterval = setInterval(() => {
-        let squareTop = square.offsetTop + 25; // speed
+        let squareTop = square.offsetTop; // speed
         square.style.top = `${squareTop}px`;
 
         if (square.offsetTop >= playingArea.clientHeight) {

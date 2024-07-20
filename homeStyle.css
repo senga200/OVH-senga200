@@ -227,6 +227,22 @@ header {
 }
 
 
+/* .square {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    opacity: 80%;
+    cursor: url('media/cursor.jpg'), pointer;
+    transition: top 0.5s ease-out, opacity 0.5s ease-out, transform 0.5s ease-out;
+    background-color: cyan;
+    box-shadow: 3px 3px 5px red, -3px -3px 5px blue;
+}
+
+.square.clicked {
+    animation: shrinkAndDisappear 0.5s forwards, rotate3D 0.5s forwards;
+    opacity: 0;
+} */
+
 .square {
     position: absolute;
     width: 20px;
@@ -235,6 +251,7 @@ header {
     cursor: url('media/cursor.jpg'), pointer;
     transition: top 0.5s ease-out, opacity 0.5s ease-out, transform 0.5s ease-out;
     background-color: black;
+    ;
     box-shadow: -3px 3px red, 3px 0 3px cyan;
     animation: anaglyphEffect 1s infinite;
 }
@@ -263,8 +280,6 @@ header {
 h1 {
     font-size: 4rem;
     text-align: center;
-    border: solid red;
-
 
 
 }
@@ -356,7 +371,6 @@ h1 {
 .mesProjets {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-
     justify-content: space-around;
     align-items: center;
     height: 100vh;
@@ -659,11 +673,6 @@ video {
 
     .glitch {
         font-size: 2.2rem;
-    }
-
-    .playingArea img {
-        width: 100%;
-
     }
 
     .presentation2, .mesProjets {
